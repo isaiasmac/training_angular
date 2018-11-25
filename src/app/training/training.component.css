@@ -1,0 +1,21 @@
+.status {
+	background-color: red;
+	color: white;
+	padding: 10px;
+	width: 90px;
+	height: 25px;
+	margin: 5px;
+	display: block;
+	border: 1px solid white;
+}
+
+.checked-in {
+	background-color: green;
+	color: white;
+	padding: 10px;
+	width: 90px;
+	height: 25px;
+	margin: 5px;
+	display: block;
+	border: 1px solid white;
+}

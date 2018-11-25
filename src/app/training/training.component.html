@@ -1,0 +1,85 @@
+<p>
+  training works!
+</p>
+
+<h2>#Ref</h2>
+<button (click)="handleClick(username.value)">Get value</button>
+<br>
+<input type="text" #username>
+
+<hr>
+
+<h2>Input</h2>
+<div>
+	<input type="text" [value]="name" (input)="handleChange($event.target.value)">
+</div>
+<div>{{ name }}</div>
+
+<hr>
+
+<h2>ngIf</h2>
+
+<div *ngIf="name.length > 2">
+	<h3>Nombre: </h3>
+	{{ name }}
+</div>
+
+<ng-template [ngIf]="name.length > 2">
+	<h3>Nombre: </h3>
+	{{ name }}
+</ng-template>
+
+<hr>
+<h2>ngFor</h2>
+<ul>
+	<li *ngFor="let passenger of passengers; let i = index;">
+		{{ i }}
+		Id: {{ passenger.id }}
+		Name: {{ passenger.fullname }}
+		<span *ngIf="passenger.checkedIn">Is Check in?: {{ passenger.checkedIn }}</span>
+	
+	</li>
+</ul>
+
+<hr>
+<h2>ngClass and className bindings</h2>
+<ul>
+	<li *ngFor="let passenger of passengers; let i = index;">
+		{{ i }}
+		Id: {{ passenger.id }}
+		Name: {{ passenger.fullname }}
+		<span *ngIf="passenger.checkedIn">Is Check in?: {{ passenger.checkedIn }}</span>
+		<span class="status" [class.checked-in]="passenger.checkedIn"></span>
+		<span class="status" [ngClass]="{ 'checked-in' : passenger.checkedIn, 'otra-clase': !passenger.checkedIn }"></span>
+	</li>
+</ul>
+
+<hr>
+<h2>ngStyle and style bindings</h2>
+<ul>
+	<li *ngFor="let passenger of passengers; let i = index;" [style.backgroundColor]="passenger.checkedIn ? '#DDD' : '#a1ab38' ">
+		{{ i }}
+		Id: {{ passenger.id }}
+		Name: {{ passenger.fullname }}
+		<span *ngIf="passenger.checkedIn">Is Check in?: {{ passenger.checkedIn }}</span>
+		<hr>
+		<h4 [ngStyle]="{ backgroundColor: passenger.checkedIn ? '#2a33d4' : '#a1ab38', color: passenger.checkedIn ? '#FFF' : '#000' }">ngStyle</h4>
+	</li>
+</ul>
+
+<h3>Pipe</h3>
+<ul>
+	<li *ngFor="let passenger of passengers; let i = index;">
+		{{ i }}
+		Id: {{ passenger.id }}
+		Name: {{ passenger.fullname }}
+		<span *ngIf="passenger.checkedIn">Is Check in?: {{ passenger.checkedIn }}</span>
+		<p> {{ passenger | json }}</p>
+
+		<div class="date">
+			Check in date: {{ passenger.checkDate | date: 'dd-MM-yyyy hh:mm:ss' }}
+		</div>
+	</li>
+</ul>
+
+
